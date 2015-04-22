@@ -1,0 +1,31 @@
+<style>
+.divStock{
+    width:400px;
+    height:400px;
+    background-color:#CCC;
+}
+</style>
+
+</head>
+
+<body>
+{{Default:header}}
+
+<p>{{$hello}}</p>
+<p>{{$show}}</p>
+
+<div class="divStock" id="divStock">
+
+</div>
+
+{{$scripts}}
+<script>
+    animate($('#divStock'),{
+    'width':700,
+    'height':800
+},300);
+
+</script>
+
+</body>
+</html>
