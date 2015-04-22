@@ -178,17 +178,17 @@ class CustomerAction
         $oCust=D('Customer');
         $rs=$oCust->getRecByTel($data['phone']);
         
-        if($rs && $rs['c_psd']==md5($data['psd']))
+        if($rs && $rs['psd']==md5($data['psd']))
         {
             //生成一个校验码
             $code=D('Identify')->getIdentifyCode();
             
             $upData=array(
-                'c_cust_code'=>$code
+                'cust_code'=>$code
             );
-            $oCust->update($upData,'c_id='.$rs['c_id']);
+            $oCust->update($upData,'id='.$rs['c_id']);
             
-            $rs=$oCust->getUserInfo($rs['c_id']);
+            $rs=$oCust->getUserInfo($rs['id']);
             returnJson(SUCCESS,$rs);
         }
         else

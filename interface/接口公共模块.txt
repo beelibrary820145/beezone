@@ -1,0 +1,495 @@
+接口公共模块
+
+接口模板:
+	地址:
+	方式:POST
+	参数:
+	返回:
+		
+
+1.用户
+
+1.1 手机号注册
+	地址:Customer_registPhone.jsp
+	方式:POST
+	参数:phone=手机号&psd=密码
+	返回:
+	{
+		"status": {
+		"msg": "",
+		"code": "0"
+		},
+		"data": {
+			"id": "5",		
+			"nicname": "x111111",
+			"type": "0",
+			"phone": "18224087283",
+			"sex": "0",
+			"birth_time": "0",
+			"icon_id": "0",
+			"no": "111111",
+			"sign": "",
+			"pinyin": "x111111",
+			"mail": "",
+			"code": "8215532f78eb0"
+		}
+	}
+
+1.2 密码修改
+	地址:Customer_modifyPsd.jsp
+	方式:POST
+	参数:code=校验码&psd=原密码&new_spd=新密码&confirm_psd=确认密码
+	返回:
+		{
+		    "status": {
+			"msg": "密码修改成功",
+			"code": "0"
+		    },
+		    "data": ""
+		}
+1.2 重置密码
+	地址:Customer_resetPsd.jsp
+	方式:POST
+	参数:code=校验码&new_psd=新密码&confirm_psd=确认密码
+	返回:
+		{
+		    "status": {
+			"msg": "密码重置成功!",
+			"code": "0"
+		    },
+		    "data": ""
+		}	
+
+1.3 用户信息编辑
+	地址:Customer_saveEdit.jsp
+	方式:POST
+	参数:code=校验码
+	任选参数:
+		icon=头像id
+		nicname=用户昵称
+		birth_time=用户生日
+		mail=邮箱地址
+		sex=性别0/1
+		sign=个性签名
+
+	返回:
+		{
+		    "status": {
+			"msg": "",
+			"code": "0"
+		    },
+		    "data": {
+			"id": "3",
+			"nicname": "bee",
+			"type": "0",
+			"phone": "18224087281",
+			"sex": "0",
+			"birth_time": "123123123",
+			"icon_id": "2",
+			"no": "111111",
+			"sign": "",
+			"pinyin": "bee",
+			"mail": "",
+			"code": "3335532f600e3"
+		    }
+		}
+
+1.4 用户注销
+	地址:Customer_logout.jsp
+	方式:POST
+	参数:code=校验码
+	返回:
+		{
+		    "status": {
+			"msg": "注销成功!",
+			"code": "0"
+		    },
+		    "data": ""
+		}
+
+
+2.用户设备
+
+2.1 上报设备信息
+	
+
+
+3.用户位置
+	
+3.1 上报经纬度信息
+	地址:CustPosition_saveLocation.jsp
+	方式:POST
+	参数:code=校验码&lng=经度&lat=纬度
+	返回:
+		{
+		    "status": {
+			"msg": "操作成功",
+			"code": "0"
+		    },
+		    "data": ""
+		}
+
+3.2 上报用户 省市区/县名 信息
+	地址:CustPosition_saveArea.jsp
+	方式:POST
+	参数:code=校验码
+	任选参数:	
+		province=省名
+		city=城市名
+		district=区/县名
+		detail=详细地址
+	返回:
+		{
+		    "status": {
+			"msg": "操作成功!",
+			"code": "0"
+		    },
+		    "data": ""
+		}
+
+3.3 上报用户 省市区/县id 信息
+	地址:CustPosition_saveAreaById.jsp
+	方式:POST
+	参数:code=校验码
+	任选参数:	
+		province=省id
+		city=城市id
+		district=区/县id
+		detail=详细地址
+	返回:
+		{
+		    "status": {
+			"msg": "操作成功!",
+			"code": "0"
+		    },
+		    "data": ""
+		}
+	
+
+
+4.全国省市县位置
+
+4.1 获取省列表
+	地址:Location_getProvinceList.jsp
+	方式:POST
+	参数:空
+	返回:
+		{
+		    "status": {
+			"msg": "",
+			"code": "0"
+		    },
+		    "data": [
+			{
+			    "ProvinceID": "1",
+			    "ProvinceName": "北京市",
+			    "Recommend": "1"
+			},
+			...
+		    ]
+		}
+
+4.2 获取城市列表
+	地址:Location_getCityList.jsp
+	方式:POST
+	参数:空
+	返回:
+		{
+		    "status": {
+			"msg": "",
+			"code": "0"
+		    },
+		    "data": [
+			{
+			    "CityID": "1",
+			    "CityName": "北京市",
+			    "ProvinceID": "1",
+			    "Recommend": "1"
+			},
+			...
+		    ]
+		}
+		
+4.3 获取区/县列表
+	地址:Location_getCityList.jsp
+	方式:POST
+	参数:空
+	返回:
+		{
+		    "status": {
+			"msg": "",
+			"code": "0"
+		    },
+		    "data": [
+			{
+			    "DistrictID": "1",
+			    "DistrictName": "东城区",
+			    "CityID": "1",
+			    "Recommend": "0"
+			},
+			...
+		    ]
+		}
+
+
+4.4 获取指定省下的城市列表
+	地址:Location_getCityByProId.jsp
+	方式:POST
+	参数:province_id=省id
+	返回:
+		{
+		    "status": {
+			"msg": "",
+			"code": "0"
+		    },
+		    "data": [
+			{
+			    "CityID": "3",
+			    "CityName": "石家庄市",
+			    "ProvinceID": "3",
+			    "Recommend": "1"
+			},
+			...
+		    ]
+		}
+
+4.5 获取指定城市下的县/区列表
+	地址:Location_getDistrictByCityId.jsp
+	方式:POST
+	参数:city_id=城市id
+	返回:
+		{
+		    "status": {
+			"msg": "",
+			"code": "0"
+		    },
+		    "data": [
+			{
+			    "DistrictID": "60",
+			    "CityID": "4",
+			    "DistrictName": "路南区"
+			},
+			...
+		    ]
+		}
+
+
+5.短信验证码
+	地址:
+	方式:POST
+	参数:phone=手机号
+	返回:
+		
+
+
+
+4.图片
+
+4.1 图片上传
+	地址:Image_save.jsp
+	方式:POST
+	参数:fname=文件内容
+	返回:
+		{
+		    "status": {
+			"msg": "",
+			"code": "0"
+		    },
+		    "data": {
+			"src": "http://localhost/choucheng/Common/Image/2015-04/14294205905839.jpg",
+			"w": "1200",
+			"h": "675",
+			"id": "2"
+		    }
+		}
+
+
+5.广告
+
+5.1 获取广告列表
+	地址:Ad_getAdList.jsp
+	方式:POST
+	参数:空
+	返回:
+		{
+		    "status": {
+			"msg": "",
+			"code": "0"
+		    },
+		    "data": [
+			{
+			    "id": "1",
+			    "url": "http://www.baidu.com/ad",
+			    "memo": "this is a test",
+			    "type": "0",
+			    "img_id": "1"
+			}
+		    ]
+		}
+
+6.用户地址管理
+
+6.1 获取用户地址列表
+	地址:Address_getAddr.jsp
+	方式:POST
+	参数:code=校验码
+	返回:	
+		{
+		    "status": {
+			"msg": "",
+			"code": "0"
+		    },
+		    "data": [
+			{
+			    "id": "1",
+			    "cust_id": "3",
+			    "addr": "爱上了的看法就爱上了对方空间萨芬",
+			    "name": "bee",
+			    "phone": "18224087281",
+			    "recommend": "0"
+			},
+			...
+		    ]
+		}
+
+6.2 修改地址
+	地址:Address_alterAddr.jsp
+	方式:POST
+	参数:code=校验码&addr=地址&name=名&phone=手机号&id=对应id
+	返回:
+		{
+		    "status": {
+			"msg": "操作成功",
+			"code": "0"
+		    },
+		    "data": ""
+		}
+6.3 添加地址	
+	地址:Address_addAddr.jsp
+	方式:POST
+	参数:code=校验码&addr=地址管理&name=用户名&phone=手机号
+	返回:	
+		{
+		    "status": {
+			"msg": "操作成功",
+			"code": "0"
+		    },
+		    "data": ""
+		}
+
+7.软件升级
+
+7.1. 获取软件版本信息
+	地址:Software_getVersion.jsp
+	方式:POST
+	参数:空
+	返回:
+		{
+		    "status": {
+			"msg": "",
+			"code": "0"
+		    },
+		    "data": {
+			"version": "1.1.0",
+			"memo": "啊打撒",
+			"time": "0"
+		    }
+		}
+
+
+8.用户反馈	
+
+8.1 用户提交反馈信息
+	地址:UserReport_report.jsp
+	方式:POST
+	任选参数:
+		content=评论内容
+		img_ids=图片ids
+		qqmail=qq号
+		
+	返回:
+		{
+		    "status": {
+			"msg": "操作成功!",
+			"code": "0"
+		    },
+		    "data": ""
+		}
+
+
+9.商家
+
+9.1 商家列表
+	地址:Store_getList.jsp
+	方式:POST
+	任选一参数:	
+		city_id=城市id
+		city=城市名
+	筛选参数:
+		name=店铺名
+		type=店铺类型
+		order=排序类型  //  0=>距离排序 1=>星级排序
+	返回:
+		{
+		    "status": {
+			"msg": "",
+			"code": "0"
+		    },
+		    "data": [
+			{
+			    "id": "1",
+			    "province_id": "1",
+			    "city_id": "1",
+			    "district_id": "1",
+			    "detail": "详细地址",
+			    "lng": "1",
+			    "lat": "1",
+			    "store_id": "1",
+			    "distance": "401185",
+			    "name": "BEE饭店",
+			    "time": "0",
+			    "icon": {
+				"id": "1",
+				"src": "http://www.baidu.com/picture/test.jpg",
+				"w": "30",
+				"h": "30"
+			    },
+			    "score": "4",
+			    "time_from": "8:20",
+			    "time_to": "20:20",
+			    "isBusiness": "1"
+			}
+		    ],
+		    "paging": {
+			"page": "1",
+			"totalCount": "1",
+			"numberOfPage": "1"
+		    }
+		}
+
+9.2 获取店铺类型列表
+	地址:StoreType_getList.jsp
+	方式:POST
+	参数:空
+	返回:
+		{
+		    "status": {
+			"msg": "",
+			"code": "0"
+		    },
+		    "data": [
+			{
+			    "id": "1",
+			    "name": "KTV"
+			},
+			...
+		    ]
+		}
+
+9.2 获取店铺详情
+	地址:
+	方式:POST
+	参数:空
+	返回:
+		
+	

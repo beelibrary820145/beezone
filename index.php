@@ -7,7 +7,7 @@ set_time_limit(10);
  */
 define('APP_PATH',dirname($_SERVER['SCRIPT_FILENAME']).'/');
 define('APP_DEBUG',true);
-define('THINK_PATH','G:/www/CCThink/Core/');
+define('THINK_PATH','G:/www/beethink/');
 /**
  * 定义基本错误消息号
  */
