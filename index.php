@@ -15,7 +15,7 @@ define('LOGIN_TYPE',1);   //登陆模式
 define('CODE_VALID_TIME',0);    //验证码有效时间 0=>表示永久有效 非零表示指定时间有效
 define('CODE_RROR',100);  //校验码错误
 define('CODE_EXPIRE',101);  //校验码已过期
-define('DOMAIN','http://'.$_SERVER['HTTP_HOST'].'/choucheng/');
+define('DOMAIN','http://'.$_SERVER['HTTP_HOST'].'/beezone/');
 define('PHONE_CODE_INTERVAL',60000);  //拉取验证码间隔时间 毫秒
 define('PHONE_CODE_EXPIRE_TIME',20*60*1000);  //验证码过期时间 毫秒 默认 20M
 
