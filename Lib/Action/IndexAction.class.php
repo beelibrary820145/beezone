@@ -29,9 +29,7 @@ class IndexAction extends Action
     public function built()
     {
         $oM=D('AutoLoad');
-        $oM->builtDir('Store');
-        
-         
+        $oM->builtDir('StoreComment'); 
     }
 }
 ?>

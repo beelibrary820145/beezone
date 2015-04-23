@@ -147,6 +147,21 @@ class StoreAction
         
         returnJson(SUCCESS,$rs,array());
     }
-    
+    /**
+     * 获取店铺详情
+     */
+    public function getDetailInfo()
+    {
+        $data=array(
+            array('s_id','int'),
+            array('lng','double'),
+            array('lat','double')
+        );
+        dataFilter($data,'post');
+        
+        $rs=D('Store')->getDetailInfo($data['s_id'],$data['lng'],$data['lat']);
+        
+        returnJson(SUCCESS,$rs);
+    }
 }
 ?>

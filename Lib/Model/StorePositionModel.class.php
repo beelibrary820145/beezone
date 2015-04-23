@@ -31,7 +31,15 @@ class StorePositionModel
      */
     public function save($data,$store_id=0)
     {
-        
+        if($this->isExists($store_id))
+        {
+            return M($this->trueTableName)->update($data,'store_id='.$store_id);
+        }   
+        else
+        {
+            $data['store_id']=$store_id;
+            return M($this->trueTableName)->insert($data);
+        }
     }
     private function isExists($store_id)
     {

@@ -448,6 +448,7 @@
 			    "distance": "401185",
 			    "name": "BEE饭店",
 			    "time": "0",
+			    "type_name": "KTV",
 			    "icon": {
 				"id": "1",
 				"src": "http://www.baidu.com/picture/test.jpg",
@@ -487,9 +488,146 @@
 		}
 
 9.2 获取店铺详情
-	地址:
+	地址:Store_getDetailInfo.jsp
 	方式:POST
-	参数:空
+	参数:s_id=店铺id&lng=经度&lat=纬度
 	返回:
+		{
+		    "status": {
+			"msg": "",
+			"code": "0"
+		    },
+		    "data": {
+			"id": "1",
+			"name": "BEE饭店",
+			"icon": {
+			    "id": "1",
+			    "src": "http://www.baidu.com/picture/test.jpg",
+			    "w": "30",
+			    "h": "30"
+			},
+			"score": "4",
+			"time_from": "8:20",
+			"type_id": "1",
+			"time_to": "20:20",
+			"isBusiness": "1",
+			"type_name": "KTV",
+			"province_id": "1",
+			"city_id": "1",
+			"district_id": "1",
+			"detail": "详细地址",
+			"lng": "1",
+			"lat": "1",
+			"address": "北京市北京市东城区",
+			"distance": "401185"
+		    }
+		}
+
+10 用户收藏 
+
+10.1 收藏商家
+	地址:CustCollect_collect.jsp
+	方式:POST
+	参数:code=校验码&obj_id=对象id&type=对象类型
+	返回:
+		{
+		    "status": {
+			"msg": "操作成功!",
+			"code": "0"
+		    },
+		    "data": ""
+		}
+		
+
+10.2 取消收藏
+	地址:CustCollect_cacelCollect.jsp
+	方式:POST
+	参数:code=校验码&obj_id=对象id&type=对象类型
+	返回:
+		{
+		    "status": {
+			"msg": "操作成功!",
+			"code": "0"
+		    },
+		    "data": ""
+		}
+		
 		
 	
+10.3 获取店铺收藏列表
+	地址:CustCollect_getList
+	方式:POST
+	参数:code=校验码&lng=经度&lat=纬度&type=1
+	返回:
+		{
+		    "status": {
+			"msg": "",
+			"code": "0"
+		    },
+		    "data": [
+			{
+			    "id": "1",
+			    "obj_id": "1",
+			    "time": "123123123",
+			    "name": "BEE饭店",
+			    "icon": {
+				"id": "1",
+				"src": "http://www.baidu.com/picture/test.jpg",
+				"w": "30",
+				"h": "30"
+			    },
+			    "score": "4",
+			    "time_from": "8:20",
+			    "type_id": "1",
+			    "time_to": "20:20",
+			    "isBusiness": "1",
+			    "type_name": "KTV",
+			    "province_id": "1",
+			    "city_id": "1",
+			    "district_id": "1",
+			    "detail": "详细地址",
+			    "lng": "1",
+			    "lat": "1",
+			    "address": "北京市北京市东城区",
+			    "distance": "314755"
+			},
+			...
+		    ]
+		}
+
+11. 商家评论
+
+11.1 评论商家(需之前在当前商家成功消费,才能评论)
+	地址:StoreComment_comment.jsp
+	方式:POST
+	参数:code=校验码&s_id=店铺id
+	参数任选:
+		img_ids=图片ids
+		content=评论内容
+	返回:	
+		{
+		    "status": {
+			"msg": "操作成功!",
+			"code": "0"
+		    },
+		    "data": ""
+		}
+
+11.2 获取商家的评论数量
+	地址:StoreStatic_getStatic.jsp
+	方式:POST
+	参数:s_id=店铺id
+	返回:
+		{
+		    "status": {
+			"msg": "",
+			"code": "0"
+		    },
+		    "data": {
+			"comment_total": "40",
+			"comment_high": "20",
+			"comment_middle": "10",
+			"comment_lower": "10"
+		    }
+		}
+
